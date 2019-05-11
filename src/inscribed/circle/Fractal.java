@@ -32,13 +32,12 @@ public abstract class Fractal {
     
     public Fractal(int order) throws IllegalArgumentException {
         if (order < 3) {
-            throw new IllegalArgumentException("The lower order polygon is 3.");
+            throw new IllegalArgumentException("The lowest order polygon possible is 3. " + order + " isn't valid.");
         }
         this.n = order;  
     }
     
     public void drawRegularPolygon(Graphics g, double x_0, double y_0, double r_0) {
-         /// Draw the Circumscribed Polygon
         Polygon boundingShape = new Polygon();
         for (int i = 0; i < this.n; i++) {
             double O = 2 * Math.PI / this.n; // Angle between two vertices (from center)
@@ -83,6 +82,7 @@ public abstract class Fractal {
         }
         return sumGamma;
     }
+    
     public abstract double getCircleDistance(int circleIndex, double r_0, double r);
     public abstract double getGamma();
     public abstract double getVertexDistance(double circleRadius);
